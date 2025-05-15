@@ -2,5 +2,7 @@
 # This .gitignore file was automatically created by Microsoft(R) Visual Studio.
 ################################################################################
 
-/.vs/App.MyIP
 /App.MyIP/x64/Debug
+/.vs/App.MyIP
+/.vs/App.MyIP.slnx/v17/DocumentLayout.json
+/.vs/App.MyIP.slnx/v17/.suo
