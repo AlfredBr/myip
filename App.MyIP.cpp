@@ -1,13 +1,28 @@
-// App.MyIP.cpp : This file contains the 'main' function. Program execution begins and ends there.
-//
+// App.MyIP.cpp
 
 #include <iostream>
 #include <winsock2.h>
 #include <ws2tcpip.h>
 #include <iphlpapi.h>
+#include <windows.h> // For clipboard functions
 
 #pragma comment(lib, "ws2_32.lib")
 #pragma comment(lib, "iphlpapi.lib")
+
+void CopyToClipboard(const char* text)
+{
+    if (!OpenClipboard(nullptr)) return;
+    EmptyClipboard();
+
+    size_t len = strlen(text) + 1;
+    HGLOBAL hMem = GlobalAlloc(GMEM_MOVEABLE, len);
+    if (hMem) {
+        memcpy(GlobalLock(hMem), text, len);
+        GlobalUnlock(hMem);
+        SetClipboardData(CF_TEXT, hMem);
+    }
+    CloseClipboard();
+}
 
 int main()
 {
@@ -44,6 +59,7 @@ int main()
             char ipstr[INET_ADDRSTRLEN];
             inet_ntop(AF_INET, &(sockaddr_ipv4->sin_addr), ipstr, sizeof(ipstr));
             std::cout << ipstr << std::endl;
+            CopyToClipboard(ipstr); // Copy to clipboard
             found = true;
             break;
         }
