@@ -9,3 +9,5 @@
 .vs/App.MyIP.slnx/v17/DocumentLayout.backup.json
 /x64/Debug
 /.vs
+/App.MyIP/x64/Release
+/x64/Release
