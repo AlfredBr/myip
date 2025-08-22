@@ -7,3 +7,5 @@
 /.vs/App.MyIP.slnx/v17/DocumentLayout.json
 /.vs/App.MyIP.slnx/v17/.suo
 .vs/App.MyIP.slnx/v17/DocumentLayout.backup.json
+/x64/Debug
+/.vs
